@@ -1,0 +1,212 @@
+
+.proj__header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.proj__scroll-controls {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.proj__scroll-row {
+  gap: 20px;
+}
+
+.proj__card {
+  position: relative;
+  min-width: 320px;
+  max-width: 340px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  cursor: default;
+}
+
+.proj__card:hover {
+  border-color: rgba(var(--card-accent-rgb), 0.25);
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 32px 64px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(var(--card-accent-rgb), 0.08);
+}
+
+.proj__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.proj__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.proj__card:hover .proj__img {
+  transform: scale(1.04);
+}
+
+.proj__placeholder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.proj__placeholder-orb {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(60px);
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.5s ease;
+}
+
+.proj__card:hover .proj__placeholder-orb {
+  transform: translateX(-50%) scale(1.15);
+}
+
+.proj__placeholder-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 30%, transparent 100%);
+}
+
+.proj__arrow-link {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(13, 13, 13, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.proj__arrow-link:hover {
+  background: rgba(var(--card-accent-rgb), 0.2);
+  border-color: rgba(var(--card-accent-rgb), 0.4);
+  color: white;
+}
+
+.proj__img-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--bg-card));
+  pointer-events: none;
+}
+
+
+.proj__body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.proj__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.proj__number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(var(--card-accent-rgb), 0.8);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+.proj__title-text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.proj__desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.proj__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.proj__source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  width: fit-content;
+  margin-top: 2px;
+}
+
+.proj__source-link:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.proj__bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--card-accent-rgb), 0.5),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.proj__card:hover .proj__bottom-line {
+  opacity: 1;
+}

@@ -1,0 +1,78 @@
+.exp__card { cursor: default; }
+
+.exp__card-inner {
+  padding: 32px 32px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exp__icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  color: rgba(245,158,11,0.7);
+  flex-shrink: 0;
+  transition: var(--transition-base);
+  align-self: flex-start;
+}
+
+.pf-card:hover .exp__icon {
+  background: rgba(245,158,11,0.1);
+  border-color: rgba(245,158,11,0.25);
+}
+
+.exp__title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.exp__role {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.exp__type-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.3);
+}
+
+.exp__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.exp__org      { color: rgba(245,158,11,0.6); }
+.exp__meta-dot { opacity: 0.3; }
+
+.exp__desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.exp__tags    { display: flex; flex-wrap: wrap; gap: 8px; }
+

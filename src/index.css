@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-base, black);
+  color: white;;
+  scroll-behavior: smooth;
+  font-family: "Mona Sans", sans-serif;
+}
+
+section {
+  width: 100%;
+}
+
+
+:root {
+  --bg-base:        #080808;
+  --bg-card:        #0d0d0d;
+  --bg-card-hover:  #101010;
+
+  --border-subtle:  rgba(255, 255, 255, 0.07);
+  --border-hover:   rgba(255, 255, 255, 0.11);
+
+ --text-primary:   rgba(255, 255, 255, 1);
+--text-secondary: rgba(255, 255, 255, 0.55);
+--text-muted:     rgba(255, 255, 255, 0.35);
+--text-faint:     rgba(255, 255, 255, 0.20);
+
+  --accent-amber:   245, 158, 11;
+  --accent-indigo:  99, 102, 241;
+  --accent-green:   74, 222, 128;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --radius-card:  20px;
+  --radius-btn:   10px;
+  --radius-tag:   6px;
+  --radius-badge: 100px;
+
+  --transition-base:    all 0.25s ease;
+  --transition-smooth:  all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Base reset for all sections */
+.pf-section {
+  font-family: var(--font-body);
+  background: var(--bg-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient background orbs */
+.pf-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pf-orb--amber-tl {
+  top: -80px; left: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(var(--accent-amber), 0.04) 0%, transparent 70%);
+}
+
+.pf-orb--amber-tr {
+  top: -60px; right: -100px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(var(--accent-amber), 0.04) 0%, transparent 70%);
+}
+
+.pf-orb--indigo-br {
+  bottom: -60px; right: -60px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(var(--accent-indigo), 0.04) 0%, transparent 70%);
+}
+
+.pf-orb--indigo-bl {
+  bottom: -60px; left: -80px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(var(--accent-indigo), 0.04) 0%, transparent 70%);
+}
+
+/* Dot-grid background */
+.pf-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 10%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Section divider line */
+.pf-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent
+  );
+  margin: 28px 0 40px;
+}
+
+/* Section content wrapper */
+.pf-container {
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 80px 80px;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .pf-container { padding: 60px 20px; }
+}
+
+/* TitleHeader */
+.pf-title-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(var(--accent-amber), 0.7);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pf-title-heading {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Card base */
+.pf-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.pf-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--accent-amber), 0.45) 35%,
+    rgba(var(--accent-indigo), 0.45) 65%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.pf-card:hover::before    { opacity: 1; }
+.pf-card:hover            { border-color: var(--border-hover); }
+
+/* Corner brackets */
+.pf-card__corner-tr {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 22px; height: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 4px 0 0;
+}
+
+.pf-card__corner-bl {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  width: 22px; height: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 0 4px;
+}
+
+/* Colored left accent line (uses --card-accent-rgb on parent) */
+.pf-card__accent-line {
+  position: absolute;
+  left: 0; top: 20px; bottom: 20px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--card-accent-rgb), 0.9),
+    rgba(var(--card-accent-rgb), 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.pf-card:hover .pf-card__accent-line { opacity: 1; }
+
+/* Card colored shimmer override (for project cards with per-card color) */
+.pf-card--colored::before {
+  background: var(--card-shimmer);
+}
+
+.pf-card--colored:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 32px 64px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(var(--card-accent-rgb), 0.07);
+}
+
+/* Tag / chip */
+.pf-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: var(--radius-tag);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.32);
+  transition: var(--transition-base);
+}
+
+.pf-card:hover .pf-tag {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Status / availability badge */
+.pf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: var(--radius-badge);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  width: fit-content;
+}
+
+.pf-badge--green {
+  color: rgba(var(--accent-green), 1);
+  background: rgba(var(--accent-green), 0.06);
+  border: 1px solid rgba(var(--accent-green), 0.22);
+}
+
+.pf-badge__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  animation: pf-pulse 2s ease infinite;
+}
+
+.pf-badge--green .pf-badge__dot {
+  background: rgba(var(--accent-green), 1);
+  box-shadow: 0 0 6px rgba(var(--accent-green), 1);
+}
+
+@keyframes pf-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+
+/* Buttons */
+.pf-btn {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pf-btn--primary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.pf-btn--primary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.pf-btn--ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.pf-btn--ghost:hover {
+  color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.pf-btn--icon {
+  width: 38px; height: 38px;
+  padding: 0;
+  justify-content: center;
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+}
+
+.pf-btn--icon:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+/* "More …" footer strip */
+.pf-more-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  opacity: 1;
+}
+
+.pf-more-strip__line {
+  flex: 1;
+  height: 1px;
+}
+
+.pf-more-strip__line--left  { background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent); }
+.pf-more-strip__line--right { background: linear-gradient(to left,  rgba(255, 255, 255, 0.1), transparent); }
+
+.pf-more-strip__text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+/* Thin inner card divider */
+.pf-inner-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 20px 0;
+}
+
+/* Scrollable row (no scrollbar) */
+.pf-scroll-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pf-scroll-row::-webkit-scrollbar { display: none; }
+
