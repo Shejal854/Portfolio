@@ -70,6 +70,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
+
   useEffect(() => {
     return () => {
       if (sentTimeoutRef.current) clearTimeout(sentTimeoutRef.current);
@@ -92,6 +93,7 @@ export default function Contact() {
         formRef.current,
         EMAILJS_CONFIG.publicKey
       );
+      
 
       setForm(INITIAL_FORM_STATE);
       setSent(true);
@@ -194,7 +196,7 @@ export default function Contact() {
                         Message Sent
                       </>
                     ) : loading ? (
-                      <><Spinner /> Sending...</>
+                      <> Sending...</>
                     ) : (
                       <>Send Message <span>↗</span></>
                     )}
